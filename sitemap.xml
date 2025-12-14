@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://buxidigital.com/</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Main Pages -->
+  <url>
+    <loc>https://buxidigital.com/services.html</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/about.html</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog.html</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://buxidigital.com/blog/ai-receptionists-transforming-customer-service.html</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/interactive-web-experiences-drive-conversions.html</loc>
+    <lastmod>2025-12-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/crm-automation-saves-time-increases-revenue.html</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/building-memorable-brand-identity.html</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/digital-transformation-small-businesses.html</loc>
+    <lastmod>2025-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/local-seo-strategies-2025.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/chatbots-vs-ai-assistants.html</loc>
+    <lastmod>2025-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/website-speed-optimization.html</loc>
+    <lastmod>2025-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/building-scalable-business-systems.html</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://buxidigital.com/blog/email-marketing-automation-best-practices.html</loc>
+    <lastmod>2025-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
