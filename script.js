@@ -1,52 +1,55 @@
 // ===================================
-// Custom Cursor
+// Custom Cursor - DISABLED
 // ===================================
 
-const cursor = document.querySelector('.custom-cursor');
-const cursorFollower = document.querySelector('.custom-cursor-follower');
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
+// Custom cursor disabled for performance and compatibility
+if (false) {
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorFollower = document.querySelector('.custom-cursor-follower');
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
 
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-    cursor.classList.add('active');
-    cursorFollower.classList.add('active');
-});
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
+        cursor.classList.add('active');
+        cursorFollower.classList.add('active');
+    });
 
-// Animate follower with delay
-function animateFollower() {
-    followerX += (mouseX - followerX) * 0.1;
-    followerY += (mouseY - followerY) * 0.1;
-    
-    cursorFollower.style.transform = `translate(${followerX - 4}px, ${followerY - 4}px)`;
-    requestAnimationFrame(animateFollower);
+    // Animate follower with delay
+    function animateFollower() {
+        followerX += (mouseX - followerX) * 0.1;
+        followerY += (mouseY - followerY) * 0.1;
+        
+        cursorFollower.style.transform = `translate(${followerX - 4}px, ${followerY - 4}px)`;
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    // Touch support for mobile
+    document.addEventListener('touchstart', (e) => {
+        mouseX = e.touches[0].clientX;
+        mouseY = e.touches[0].clientY;
+        cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
+        cursor.classList.add('active');
+        cursorFollower.classList.add('active');
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+        mouseX = e.touches[0].clientX;
+        mouseY = e.touches[0].clientY;
+        cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
+    }, { passive: true });
+
+    // Hover effects on interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .service-card, .stat-item');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
 }
-animateFollower();
-
-// Touch support for mobile
-document.addEventListener('touchstart', (e) => {
-    mouseX = e.touches[0].clientX;
-    mouseY = e.touches[0].clientY;
-    cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-    cursor.classList.add('active');
-    cursorFollower.classList.add('active');
-}, { passive: true });
-
-document.addEventListener('touchmove', (e) => {
-    mouseX = e.touches[0].clientX;
-    mouseY = e.touches[0].clientY;
-    cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-}, { passive: true });
-
-// Hover effects on interactive elements
-const interactiveElements = document.querySelectorAll('a, button, .service-card, .stat-item');
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-});
 
 // ===================================
 // Mobile Menu Toggle

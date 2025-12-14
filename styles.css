@@ -67,9 +67,12 @@
 html {
     scroll-behavior: smooth;
     overscroll-behavior: none;
+    height: 100%;
 }
 
 body {
+    height: 100%;
+    position: relative;
     font-family: var(--font-family);
     background: var(--color-bg-primary);
     color: var(--color-text-primary);
@@ -78,11 +81,16 @@ body {
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    cursor: none;
+    cursor: auto;
 }
 
-/* Custom Cursor */
-.custom-cursor {
+/* Custom Cursor - DISABLED */
+.custom-cursor,
+.custom-cursor-follower {
+    display: none !important;
+}
+
+.custom-cursor-disabled {
     position: fixed;
     width: 20px;
     height: 20px;
