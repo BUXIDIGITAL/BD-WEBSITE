@@ -26,12 +26,49 @@ function animateFollower() {
 }
 animateFollower();
 
+// Touch support for mobile
+document.addEventListener('touchstart', (e) => {
+    mouseX = e.touches[0].clientX;
+    mouseY = e.touches[0].clientY;
+    cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
+    cursor.classList.add('active');
+    cursorFollower.classList.add('active');
+}, { passive: true });
+
+document.addEventListener('touchmove', (e) => {
+    mouseX = e.touches[0].clientX;
+    mouseY = e.touches[0].clientY;
+    cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
+}, { passive: true });
+
 // Hover effects on interactive elements
 const interactiveElements = document.querySelectorAll('a, button, .service-card, .stat-item');
 interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
+
+// ===================================
+// Mobile Menu Toggle
+// ===================================
+
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+}
 
 // ===================================
 // Hero Text Animations
