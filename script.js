@@ -736,3 +736,81 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(toggleButton);
 });
 */
+// ===================================
+// Contact Form Handling
+// ===================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
+    const messageTextarea = document.getElementById('message');
+    const charCountSpan = document.getElementById('char-count');
+    const successMessage = document.getElementById('form-success');
+    const errorMessage = document.getElementById('form-error');
+    
+    // Character counter for message textarea
+    if (messageTextarea && charCountSpan) {
+        messageTextarea.addEventListener('input', () => {
+            const count = messageTextarea.value.length;
+            charCountSpan.textContent = count;
+            
+            if (count > 1000) {
+                charCountSpan.style.color = '#FF6B6B';
+            } else {
+                charCountSpan.style.color = '';
+            }
+        });
+    }
+    
+    // Form submission
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending...';
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success
+                    contactForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.classList.add('show');
+                    contactForm.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    // Error
+                    errorMessage.style.display = 'block';
+                    errorMessage.classList.add('show');
+                    
+                    // Scroll to error message
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } catch (error) {
+                // Network error
+                errorMessage.style.display = 'block';
+                errorMessage.classList.add('show');
+                
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+    }
+});
