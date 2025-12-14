@@ -73,70 +73,18 @@
     <section class="contact-section">
         <div class="container">
             <div class="contact-wrapper">
-                <!-- Contact Info -->
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p class="contact-description">
-                        Whether you need a complete digital transformation or a specific service, we're here to help. Fill out the form and we'll get back to you within 24 hours.
-                    </p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method-item">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Phone</h3>
-                                <a href="tel:+13068747017" class="contact-link">306-874-7017</a>
-                                <p class="contact-note">Mon-Fri, 9am-6pm CST</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method-item">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 8L10.89 13.26C11.5 13.67 12.5 13.67 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Email</h3>
-                                <a href="mailto:richard@buxidigital.com" class="contact-link">richard@buxidigital.com</a>
-                                <p class="contact-note">We'll respond within 24 hours</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method-item">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Location</h3>
-                                <p class="contact-link">Saskatchewan, Canada</p>
-                                <p class="contact-note">Serving clients globally</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-hours">
-                        <h3>Business Hours</h3>
-                        <ul>
-                            <li><span>Monday - Friday:</span> 9:00 AM - 6:00 PM CST</li>
-                            <li><span>Saturday:</span> By appointment only</li>
-                            <li><span>Sunday:</span> Closed</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Contact Form -->
+                <!-- Contact Form - Now Full Width -->
                 <div class="contact-form-wrapper">
+                    <div class="form-header">
+                        <h2>Send Us a Message</h2>
+                        <p class="form-intro">
+                        Whether you need a complete digital transformation or a specific service, we're here to help. Fill out the form and we'll get back to you within 24 hours.
+                        </p>
+                    </div>
+                    
                     <form id="contact-form" class="contact-form" action="https://formspree.io/f/mnnerjdq" method="POST">
                         <input type="hidden" name="_next" value="https://buxidigital.com/thank-you.html">
                         <input type="hidden" name="_subject" value="New Contact Form Submission - BUXI DIGITAL">
-                        <h3>Send Us a Message</h3>
                         
                         <div class="form-row">
                             <div class="form-group">
@@ -162,36 +110,38 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="service">What service are you interested in? *</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service...</option>
-                                <option value="custom-website">Custom Website Development</option>
-                                <option value="ai-automation">AI Automation & Chatbots</option>
-                                <option value="crm-setup">CRM Setup & Integration</option>
-                                <option value="branding">Branding & Design</option>
-                                <option value="marketing">Digital Marketing</option>
-                                <option value="ai-receptionist">AI Receptionist</option>
-                                <option value="consultation">Consultation</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="budget">Estimated Budget</label>
-                            <select id="budget" name="budget">
-                                <option value="">Select a budget range...</option>
-                                <option value="under-5k">Under $5,000</option>
-                                <option value="5k-10k">$5,000 - $10,000</option>
-                                <option value="10k-25k">$10,000 - $25,000</option>
-                                <option value="25k-50k">$25,000 - $50,000</option>
-                                <option value="50k-plus">$50,000+</option>
-                            </select>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="service">What service are you interested in? *</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service...</option>
+                                    <option value="custom-website">Custom Website Development</option>
+                                    <option value="ai-automation">AI Automation & Chatbots</option>
+                                    <option value="crm-setup">CRM Setup & Integration</option>
+                                    <option value="branding">Branding & Design</option>
+                                    <option value="marketing">Digital Marketing</option>
+                                    <option value="ai-receptionist">AI Receptionist</option>
+                                    <option value="consultation">Consultation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget">Estimated Budget</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select a budget range...</option>
+                                    <option value="under-5k">Under $5,000</option>
+                                    <option value="5k-10k">$5,000 - $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k-50k">$25,000 - $50,000</option>
+                                    <option value="50k-plus">$50,000+</option>
+                                </select>
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Tell us about your project *</label>
-                            <textarea id="message" name="message" required rows="6" placeholder="Describe your project, goals, timeline, and any specific requirements..."></textarea>
+                            <textarea id="message" name="message" required rows="8" placeholder="Describe your project, goals, timeline, and any specific requirements..."></textarea>
                             <span class="char-count"><span id="char-count">0</span> / 1000 characters</span>
                         </div>
                         
@@ -224,10 +174,86 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <h4>Something Went Wrong</h4>
+                        <h4>Oops! Something went wrong.</h4>
                         <p>Please try again or contact us directly at <a href="mailto:richard@buxidigital.com">richard@buxidigital.com</a></p>
                     </div>
                 </div>
+                
+                <!-- Contact Info Sidebar -->
+                <div class="contact-info-sidebar">
+                    <div class="info-card">
+                        <h3>Contact Information</h3>
+                        <div class="contact-methods">
+                            <div class="contact-method-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <a href="tel:+13068747017" class="contact-link">306-874-7017</a>
+                                    <p class="contact-note">Mon-Fri, 9am-6pm CST</p>
+                                </div>
+                            </div>
+                        
+                            <div class="contact-method-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 8L10.89 13.26C11.5 13.67 12.5 13.67 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a href="mailto:richard@buxidigital.com" class="contact-link">richard@buxidigital.com</a>
+                                    <p class="contact-note">We'll respond within 24 hours</p>
+                                </div>
+                            </div>
+                        
+                            <div class="contact-method-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p class="contact-link-text">Saskatchewan, Canada</p>
+                                    <p class="contact-note">Serving clients globally</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Business Hours</h3>
+                        <div class="contact-hours">
+                            <div class="hours-item">
+                                <span class="day">Monday - Friday:</span>
+                                <span class="time">9:00 AM - 6:00 PM CST</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Saturday:</span>
+                                <span class="time">By appointment only</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Sunday:</span>
+                                <span class="time">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card trust-badges">
+                        <h3>Why Choose Us?</h3>
+                        <ul class="trust-list">
+                            <li>✓ 24-hour response time</li>
+                            <li>✓ Canadian-based team</li>
+                            <li>✓ 75+ satisfied clients</li>
+                            <li>✓ Custom solutions</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
