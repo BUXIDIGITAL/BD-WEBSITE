@@ -337,6 +337,7 @@ body {
 .hero {
     position: relative;
     min-height: 100vh;
+    min-height: 100svh; /* Safe viewport height for iOS */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2264,6 +2265,69 @@ body {
     .thank-you-actions .btn-large {
         width: 100%;
         justify-content: center;
+    }
+}
+
+/* ===================================
+   Mobile Performance Optimizations
+   =================================== */
+
+@media (max-width: 768px) {
+    /* Disable GPU-heavy blur effects on mobile */
+    .gradient-orb {
+        filter: blur(40px) !important; /* Reduce blur intensity */
+        opacity: 0.15 !important; /* Reduce opacity */
+        animation: none !important; /* Disable float animation */
+    }
+    
+    /* Remove backdrop-filter on mobile for better performance */
+    .navbar,
+    .service-card,
+    .trust-item,
+    .btn-secondary,
+    .stat-card,
+    .timeline-item,
+    .contact-form,
+    .info-card {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(10, 14, 39, 0.95) !important; /* More opaque fallback */
+    }
+    
+    .navbar {
+        background: rgba(10, 14, 39, 0.98) !important;
+    }
+}
+
+/* ===================================
+   Reduced Motion Support
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    /* Disable specific animations */
+    .gradient-orb {
+        animation: none !important;
+    }
+    
+    @keyframes float,
+    @keyframes pulse,
+    @keyframes scrollDown,
+    @keyframes fadeInUp,
+    @keyframes glitch,
+    @keyframes scaleIn,
+    @keyframes scramble {
+        0%, 100% {
+            transform: none;
+            opacity: 1;
+        }
     }
 }
 

@@ -125,9 +125,13 @@ class ParticleSystem {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.particles = [];
-        this.particleCount = 80;
+        this.isAnimating = true;
+        
+        // Mobile detection and performance optimization
+        this.isMobile = window.innerWidth <= 768;
+        this.particleCount = this.isMobile ? 30 : 80; // Reduce particles on mobile
         this.mouse = { x: null, y: null, radius: 150 };
-        this.connectionDistance = 120;
+        this.connectionDistance = this.isMobile ? 80 : 120;
         
         this.resizeCanvas();
         this.init();
@@ -140,13 +144,31 @@ class ParticleSystem {
             this.mouse.y = null;
         });
         
+        // Pause animation when tab is hidden to prevent crashes
+        document.addEventListener('visibilitychange', () => {
+            this.isAnimating = !document.hidden;
+            if (this.isAnimating) {
+                this.animate();
+            }
+        });
+        
         // Start animation
         this.animate();
     }
     
     resizeCanvas() {
-        this.canvas.width = this.canvas.offsetWidth;
-        this.canvas.height = this.canvas.offsetHeight;
+        // Use devicePixelRatio for proper rendering on high-DPI displays
+        const dpr = window.devicePixelRatio || 1;
+        const rect = this.canvas.getBoundingClientRect();
+        
+        this.canvas.width = rect.width * dpr;
+        this.canvas.height = rect.height * dpr;
+        
+        this.ctx.scale(dpr, dpr);
+        
+        // Update canvas display size
+        this.canvas.style.width = rect.width + 'px';
+        this.canvas.style.height = rect.height + 'px';
     }
     
     handleMouseMove(e) {
@@ -183,6 +205,8 @@ class ParticleSystem {
     }
     
     animate() {
+        if (!this.isAnimating) return; // Stop animation if tab is hidden
+        
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         this.particles.forEach(particle => {
@@ -213,8 +237,10 @@ class Particle {
     }
     
     draw(ctx) {
-        // Draw trail for shooting stars
-        if (this.isShooting && this.trail.length > 0) {
+        const isMobile = window.innerWidth <= 768;
+        
+        // Draw trail for shooting stars (disabled on mobile for performance)
+        if (!isMobile && this.isShooting && this.trail.length > 0) {
             for (let i = 0; i < this.trail.length; i++) {
                 const alpha = (i / this.trail.length) * 0.5;
                 ctx.fillStyle = `rgba(255, 184, 0, ${alpha})`;
@@ -234,13 +260,15 @@ class Particle {
         ctx.closePath();
         ctx.fill();
         
-        // Enhanced glow effect
-        const glowIntensity = this.isShooting ? 20 : 10;
-        const glowColor = this.isShooting ? 'rgba(255, 184, 0, 0.6)' : 'rgba(0, 212, 255, 0.5)';
-        ctx.shadowBlur = glowIntensity;
-        ctx.shadowColor = glowColor;
-        ctx.fill();
-        ctx.shadowBlur = 0;
+        // Enhanced glow effect (disabled on mobile for performance)
+        if (!isMobile) {
+            const glowIntensity = this.isShooting ? 20 : 10;
+            const glowColor = this.isShooting ? 'rgba(255, 184, 0, 0.6)' : 'rgba(0, 212, 255, 0.5)';
+            ctx.shadowBlur = glowIntensity;
+            ctx.shadowColor = glowColor;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
     }
     
     update(canvasWidth, canvasHeight, mouse) {
@@ -307,9 +335,15 @@ class Particle {
 // ===================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize particle system
+    // Initialize particle system only on desktop and when motion is not reduced
     const canvas = document.getElementById('particle-canvas');
-    if (canvas) {
+    const isMobile = window.innerWidth <= 768;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (canvas && !isMobile && !prefersReducedMotion) {
+        new ParticleSystem(canvas);
+    } else if (canvas && isMobile) {
+        // Initialize with reduced settings on mobile
         new ParticleSystem(canvas);
     }
     
