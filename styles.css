@@ -2094,6 +2094,24 @@ body {
 }
 
 /* Contact Page Responsive */
+@media (min-width: 1025px) {
+    .contact-form .form-group label {
+        font-size: var(--font-size-md);
+        margin-bottom: 0.875rem;
+    }
+
+    .contact-form .form-group input,
+    .contact-form .form-group select {
+        padding: 1.25rem 1.75rem;
+        min-height: 60px;
+    }
+
+    .contact-form .form-group textarea {
+        padding: 1.25rem 1.75rem;
+        min-height: 220px;
+    }
+}
+
 @media (max-width: 1024px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
