@@ -1,57 +1,4 @@
 // ===================================
-// Custom Cursor - DISABLED
-// ===================================
-
-// Custom cursor disabled for performance and compatibility
-if (false) {
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorFollower = document.querySelector('.custom-cursor-follower');
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-        cursor.classList.add('active');
-        cursorFollower.classList.add('active');
-    });
-
-    // Animate follower with delay
-    function animateFollower() {
-        followerX += (mouseX - followerX) * 0.1;
-        followerY += (mouseY - followerY) * 0.1;
-        
-        cursorFollower.style.transform = `translate(${followerX - 4}px, ${followerY - 4}px)`;
-        requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
-
-    // Touch support for mobile
-    document.addEventListener('touchstart', (e) => {
-        mouseX = e.touches[0].clientX;
-        mouseY = e.touches[0].clientY;
-        cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-        cursor.classList.add('active');
-        cursorFollower.classList.add('active');
-    }, { passive: true });
-
-    document.addEventListener('touchmove', (e) => {
-        mouseX = e.touches[0].clientX;
-        mouseY = e.touches[0].clientY;
-        cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-    }, { passive: true });
-
-    // Hover effects on interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .service-card, .stat-item');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-}
-
-// ===================================
 // Mobile Menu Toggle
 // ===================================
 
@@ -71,52 +18,6 @@ if (mobileMenuToggle) {
             navLinks.classList.remove('active');
         });
     });
-}
-
-// ===================================
-// Hero Text Animations
-// ===================================
-
-// Scramble text effect
-function scrambleText(element) {
-    const originalText = element.textContent;
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
-    let iteration = 0;
-    
-    const interval = setInterval(() => {
-        element.textContent = originalText
-            .split('')
-            .map((char, index) => {
-                if (char === ' ') return ' ';
-                if (index < iteration) return originalText[index];
-                return characters[Math.floor(Math.random() * characters.length)];
-            })
-            .join('');
-        
-        if (iteration >= originalText.length) {
-            clearInterval(interval);
-        }
-        iteration += 1 / 3;
-    }, 30);
-}
-
-// Glitch effect
-const glitchText = document.querySelector('.glitch-text');
-if (glitchText) {
-    setInterval(() => {
-        if (Math.random() > 0.95) {
-            glitchText.style.animation = 'glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            setTimeout(() => {
-                glitchText.style.animation = '';
-            }, 300);
-        }
-    }, 2000);
-}
-
-// Trigger scramble on page load
-const scrambleElement = document.querySelector('.scramble-text');
-if (scrambleElement) {
-    setTimeout(() => scrambleText(scrambleElement), 500);
 }
 
 // ===================================
