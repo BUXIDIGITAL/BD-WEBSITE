@@ -644,8 +644,11 @@ body {
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.03) 0%, 
+        rgba(255, 255, 255, 0.01) 50%,
+        rgba(200, 200, 220, 0.02) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     transition: all var(--transition-normal);
@@ -656,6 +659,10 @@ body {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.6s ease-out forwards;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .service-card:nth-child(1) { animation-delay: 0.1s; }
@@ -671,20 +678,54 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: var(--gradient-primary);
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(200, 200, 220, 0.05) 50%,
+        rgba(255, 255, 255, 0.03) 100%);
     opacity: 0;
     transition: var(--transition-normal);
+    border-radius: var(--radius-lg);
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.1),
+        rgba(0, 212, 255, 0.15),
+        rgba(255, 184, 0, 0.15),
+        rgba(255, 255, 255, 0.1));
+    border-radius: var(--radius-lg);
+    opacity: 0;
+    z-index: -1;
+    transition: var(--transition-normal);
+    filter: blur(8px);
 }
 
 .service-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(0, 212, 255, 0.2);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.06) 0%, 
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(200, 200, 220, 0.04) 100%);
+    border-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-8px);
-    box-shadow: var(--glow-cyan);
+    box-shadow: 
+        0 12px 32px rgba(0, 212, 255, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover::after {
     opacity: 1;
 }
 
