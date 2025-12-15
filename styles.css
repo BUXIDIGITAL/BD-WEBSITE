@@ -66,20 +66,12 @@
 
 html {
     height: 100%;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
 }
 
 body {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    overflow-y: scroll;
+    min-height: 100%;
     overflow-x: hidden;
     overscroll-behavior: none;
-    overscroll-behavior-y: none;
-    overscroll-behavior-x: none;
     -webkit-overflow-scrolling: touch;
     font-family: var(--font-family);
     background: var(--color-bg-primary);
