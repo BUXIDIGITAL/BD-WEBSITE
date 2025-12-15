@@ -1122,6 +1122,8 @@ body {
     border: 1px solid var(--border-1);
     border-radius: var(--radius-lg);
     overflow: hidden;
+    position: relative;
+    isolation: isolate;
     transition: all var(--transition-normal);
     animation: none;
     box-shadow: var(--shadow-sm);
@@ -1131,6 +1133,89 @@ body {
     transform: translateY(-4px);
     border-color: var(--border-2);
     box-shadow: var(--shadow-md);
+}
+
+/* Animated Card Rim + Silver Glow (desktop-only) */
+@keyframes rim-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :is(
+        .blog-card,
+        .info-card,
+        .founder-stat-card,
+        .philosophy-card,
+        .about-card,
+        .contact-form-wrapper,
+        .services-contact-info
+    ) {
+        position: relative;
+        isolation: isolate;
+    }
+
+    :is(
+        .blog-card,
+        .info-card,
+        .founder-stat-card,
+        .philosophy-card,
+        .about-card,
+        .contact-form-wrapper,
+        .services-contact-info
+    )::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        border-radius: inherit;
+        background: conic-gradient(
+            from 0deg,
+            rgba(255, 255, 255, 0.55),
+            rgba(0, 212, 255, 0.22),
+            rgba(0, 102, 255, 0.22),
+            rgba(99, 102, 241, 0.22),
+            rgba(255, 255, 255, 0.55)
+        );
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0.65;
+        animation: rim-rotate 12s linear infinite;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    :is(
+        .blog-card,
+        .info-card,
+        .founder-stat-card,
+        .philosophy-card,
+        .about-card,
+        .contact-form-wrapper,
+        .services-contact-info
+    )::after {
+        content: '';
+        position: absolute;
+        inset: -35%;
+        border-radius: inherit;
+        background: radial-gradient(
+            closest-side,
+            rgba(255, 255, 255, 0.12),
+            rgba(0, 212, 255, 0.08),
+            transparent 65%
+        );
+        filter: blur(18px);
+        opacity: 0.22;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    :is(.blog-card, .info-card, .founder-stat-card, .philosophy-card, .about-card):hover {
+        box-shadow: var(--shadow-md), 0 0 32px rgba(255, 255, 255, 0.08);
+        transform: translateY(-4px);
+    }
 }
 
 .blog-image {
@@ -1194,6 +1279,38 @@ body {
 
 .blog-read-more:hover {
     padding-left: 4px;
+}
+
+/* Blog cards: shorter previews on desktop */
+@media (min-width: 1025px) {
+    .blog-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .blog-title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .blog-excerpt {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+
+    .blog-read-more {
+        margin-top: auto;
+    }
 }
 
 /* Newsletter Section */
@@ -1773,11 +1890,22 @@ body {
 
 .contact-wrapper {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(320px, 1fr) minmax(640px, 2fr);
+    grid-template-areas: "sidebar form";
     gap: var(--spacing-xl);
     align-items: start;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.contact-form-wrapper {
+    grid-area: form;
+    background: var(--surface-1);
+    border: 1px solid var(--border-1);
+    border-radius: var(--radius-xl);
+    padding: clamp(2rem, 5vw, 3rem);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .form-header {
@@ -1802,6 +1930,7 @@ body {
 }
 
 .contact-info-sidebar {
+    grid-area: sidebar;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
@@ -1931,18 +2060,13 @@ body {
     padding-left: 0.5rem;
 }
 
-/* Contact Form */
-.contact-form-wrapper {
-    position: relative;
-}
-
 .contact-form {
-    background: var(--surface-1);
-    border: 1px solid var(--border-1);
-    border-radius: var(--radius-xl);
-    padding: clamp(2rem, 5vw, 3rem);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .form-row {
@@ -2115,12 +2239,14 @@ body {
 @media (max-width: 1024px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "sidebar"
+            "form";
         gap: var(--spacing-lg);
     }
     
     .contact-info-sidebar {
         position: static;
-        order: -1;
     }
     
     .form-row {
