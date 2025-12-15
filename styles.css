@@ -356,6 +356,7 @@ body {
    =================================== */
 
 .hero {
+    --hero-image: none;
     position: relative;
     min-height: 100vh;
     min-height: 100svh; /* Safe viewport height for iOS */
@@ -374,6 +375,21 @@ body {
     bottom: 0;
     z-index: 0;
     background: var(--gradient-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Optional hero image (set --hero-image on the section) */
+.hero.has-hero-image .hero-background {
+    background-image:
+        linear-gradient(180deg, rgba(10, 14, 39, 0.55) 0%, rgba(10, 14, 39, 0.88) 100%),
+        var(--hero-image),
+        var(--gradient-bg);
+}
+
+.hero.has-hero-image #particle-canvas {
+    opacity: 0.35;
 }
 
 #particle-canvas {
