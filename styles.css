@@ -23,7 +23,8 @@
     --color-accent-coral: #FF6B6B;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #FFB800 0%, #FF6B6B 100%);
+    /* Neutral primary (Apple-ish): cool + clean */
+    --gradient-primary: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-blue) 100%);
     --gradient-secondary: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
     --gradient-hero: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
     --gradient-bg: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 100%);
@@ -46,11 +47,19 @@
     --font-size-3xl: 4rem;
     
     /* Shadows & Effects */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.3);
-    --glow-blue: 0 0 30px rgba(0, 102, 255, 0.4);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.22);
+    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.28);
+    --shadow-lg: 0 14px 40px rgba(0, 0, 0, 0.36);
+    --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.22);
+    --glow-blue: 0 0 30px rgba(0, 102, 255, 0.24);
+
+    /* Surfaces (premium/neutral glass) */
+    --surface-1: rgba(255, 255, 255, 0.04);
+    --surface-2: rgba(255, 255, 255, 0.06);
+    --surface-3: rgba(255, 255, 255, 0.08);
+    --border-1: rgba(255, 255, 255, 0.10);
+    --border-2: rgba(255, 255, 255, 0.16);
+    --focus-ring: 0 0 0 4px rgba(0, 212, 255, 0.18);
     
     /* Border Radius */
     --radius-sm: 0.5rem;
@@ -292,9 +301,9 @@ body {
 
 .btn-primary {
     background: var(--gradient-primary);
-    color: #0a0e27;
+    color: #ffffff;
     font-weight: 700;
-    box-shadow: 0 0 20px rgba(255, 184, 0, 0.4);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-primary::before {
@@ -309,8 +318,8 @@ body {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 40px rgba(255, 184, 0, 0.6), 0 0 60px rgba(255, 107, 107, 0.3);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
 }
 
 .btn-primary:hover::before {
@@ -318,17 +327,23 @@ body {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-1);
     color: var(--color-text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-1);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(0, 212, 255, 0.3);
-    transform: translateY(-2px);
+    background: var(--surface-2);
+    border-color: var(--border-2);
+    transform: translateY(-1px);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-md), var(--focus-ring);
 }
 
 .btn-large {
@@ -1046,9 +1061,9 @@ body {
     margin-bottom: var(--spacing-lg);
     flex-wrap: wrap;
     padding: var(--spacing-lg);
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-1);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-1);
 }
 
 .contact-method {
@@ -1063,7 +1078,7 @@ body {
 
 .contact-method:hover {
     color: var(--color-accent-cyan);
-    transform: translateX(4px);
+    transform: none;
 }
 
 .contact-divider {
@@ -1088,18 +1103,19 @@ body {
 }
 
 .blog-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--surface-1);
+    border: 1px solid var(--border-1);
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: all var(--transition-normal);
-    animation: fadeInUp 0.6s ease-out;
+    animation: none;
+    box-shadow: var(--shadow-sm);
 }
 
 .blog-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 212, 255, 0.3);
-    box-shadow: var(--glow-cyan);
+    transform: translateY(-4px);
+    border-color: var(--border-2);
+    box-shadow: var(--shadow-md);
 }
 
 .blog-image {
@@ -1897,8 +1913,8 @@ body {
 }
 
 .contact-form {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-1);
+    border: 1px solid var(--border-1);
     border-radius: var(--radius-xl);
     padding: clamp(2rem, 5vw, 3rem);
     backdrop-filter: blur(10px);
@@ -1917,7 +1933,7 @@ body {
 
 .form-group label {
     display: block;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: 0.75rem;
@@ -1928,8 +1944,8 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 1.125rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-1);
+    border: 1px solid var(--border-1);
     border-radius: var(--radius-lg);
     color: var(--color-text-primary);
     font-size: var(--font-size-md);
@@ -1942,9 +1958,9 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-accent-cyan);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.15);
-    transform: translateY(-2px);
+    background: var(--surface-2);
+    box-shadow: var(--focus-ring);
+    transform: none;
 }
 
 .form-group input::placeholder,
