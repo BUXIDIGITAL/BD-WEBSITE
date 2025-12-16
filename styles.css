@@ -1846,10 +1846,6 @@ body {
         gap: var(--spacing-sm);
     }
     
-    .nav-link {
-        display: none;
-    }
-    
     .hero {
         padding: calc(var(--spacing-lg) + 60px) 0 var(--spacing-lg);
     }
