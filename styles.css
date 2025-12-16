@@ -1979,6 +1979,7 @@ body {
     .nav-links.active {
         transform: translateX(0);
         pointer-events: auto;
+        display: flex;
     }
     
     .nav-links a {
@@ -2380,10 +2381,22 @@ body {
             "sidebar"
             "form";
         gap: var(--spacing-lg);
+        max-width: 100%;
     }
     
     .contact-info-sidebar {
         position: static;
+        width: 100%;
+    }
+    
+    .contact-form-wrapper {
+        width: 100%;
+        max-width: 100%;
+        padding: var(--spacing-lg);
+    }
+    
+    .info-card {
+        width: 100%;
     }
     
     .form-row {
