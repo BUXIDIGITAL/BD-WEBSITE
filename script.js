@@ -140,7 +140,7 @@ class ParticleSystem {
                 
                 if (distance < this.connectionDistance) {
                     const opacity = 1 - (distance / this.connectionDistance);
-                    this.ctx.strokeStyle = `rgba(0, 212, 255, ${opacity * 0.2})`;
+                    this.ctx.strokeStyle = `rgba(200, 143, 84, ${opacity * 0.14})`;
                     this.ctx.lineWidth = 1;
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
@@ -200,7 +200,7 @@ class Particle {
         // Main particle with gradient colors
         const colors = this.isShooting 
             ? 'rgba(255, 184, 0, 0.8)' 
-            : `rgba(0, 212, 255, ${0.4 + Math.random() * 0.3})`;
+            : `rgba(200, 143, 84, ${0.35 + Math.random() * 0.25})`;
         ctx.fillStyle = colors;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -210,7 +210,7 @@ class Particle {
         // Enhanced glow effect (disabled on mobile for performance)
         if (!isMobile) {
             const glowIntensity = this.isShooting ? 20 : 10;
-            const glowColor = this.isShooting ? 'rgba(255, 184, 0, 0.6)' : 'rgba(0, 212, 255, 0.5)';
+            const glowColor = this.isShooting ? 'rgba(255, 184, 0, 0.6)' : 'rgba(200, 143, 84, 0.45)';
             ctx.shadowBlur = glowIntensity;
             ctx.shadowColor = glowColor;
             ctx.fill();
