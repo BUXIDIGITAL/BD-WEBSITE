@@ -50,6 +50,14 @@
     --gradient-hero: var(--gradient-metal);
     --gradient-bg: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
     
+    /* Section-level obsidian / charcoal gradient for two-tone separation (no blue) */
+    --gradient-section-obsidian: linear-gradient(
+        180deg,
+        #0B0C10 0%,
+        #10131A 40%,
+        #141820 100%
+    );
+    
     /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -812,7 +820,7 @@ body {
 .about-section {
     padding: var(--spacing-xl) 0;
     position: relative;
-    background: linear-gradient(180deg, #0a0e27 0%, #12172e 50%, #0a0e27 100%);
+    background: var(--gradient-section-obsidian);
 }
 
 /* About Page Specific Styles */
@@ -851,7 +859,7 @@ body {
 /* Philosophy Section */
 .philosophy-section {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 100%);
+    background: var(--gradient-section-obsidian);
 }
 
 .philosophy-grid {
@@ -1486,7 +1494,7 @@ body {
 
 .blog-post-header {
     padding: calc(var(--spacing-xl) + 60px) 0 var(--spacing-lg);
-    background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 100%);
+    background: var(--gradient-section-obsidian);
 }
 
 .blog-post-meta {
@@ -2111,7 +2119,7 @@ body {
 }
 
 .contact-icon svg {
-    stroke: #0a0e27;
+    stroke: var(--metal-silver-2);
     width: 20px;
     height: 20px;
 }
